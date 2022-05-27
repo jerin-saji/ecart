@@ -1,0 +1,26 @@
+    {% extends 'base.html' %}
+    
+    {% block content %}
+
+    <div class="container">
+      <div style="text-align:center;">
+        <h2>Contact Us</h2>
+        <p>Swing by for a cup of coffee, or leave us a message:</p>
+      </div>
+      <div class="row">
+        <div class="column">
+          <img src="https://picsum.photos/200/133" style="width:100%" alt="noimage">
+        </div>
+        <div class="column">
+          <form action="" method="post">
+            {% csrf_token %}
+            <table class="table table-borderless">         
+                 {{ form.as_table}}
+            </table>
+            
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% endblock %}
