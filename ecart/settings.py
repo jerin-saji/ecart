@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'master',
     'product',
     'user',
+    'social_django',  # social media integration
+
 ]
 
 MIDDLEWARE = [
@@ -50,6 +52,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'social_django.middleware.SocialAuthExceptionMiddleware',#social media integration
 ]
 
 ROOT_URLCONF = 'ecart.urls'
@@ -65,6 +69,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'social_django.context_processors.backends',  #social media integration
+                'social_django.context_processors.login_redirect', #social media integration
             ],
         },
     },
@@ -131,6 +138,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # custom properties
+LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home' 
 
@@ -141,3 +149,18 @@ EMAIL_HOST_USER = "jerinecart@gmail.com"
 EMAIL_HOST_PASSWORD = "jerinecart@22"
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+#  GOOGLE RECAPTCHA
+GOOGLE_RECAPTCHA_SECRET_KEY ="6LfQ0CEgAAAAAEPXCnRxKXR8426grUCygITkRvwr"
+GOOGLE_RECAPTCHA_VERIFY_URL = 'https://www.google.com/recaptcha/api/siteverify'
+
+
+# social media integration starts
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+# social media integration ends

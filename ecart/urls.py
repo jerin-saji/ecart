@@ -31,6 +31,8 @@ urlpatterns = [
     path('product/',include('product.urls')),
     path('user/',include('user.urls')),
 
+    path('oauth/', include('social_django.urls', namespace='social')),  # <-- social media int
+
 ]
 
 urlpatterns += static(settings.STATIC_URL,document_root = settings.STATIC_ROOT)

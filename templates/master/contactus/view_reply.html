@@ -2,10 +2,22 @@
 
 {% block content %}
 
-<div class="container">
-    <div class="row">
-        <div class="col">
-           {{object.reply}}
+<div class="container my-3">
+    <div class="row ">
+        <div class="col" >
+            <table style="width: 100%;">
+                <tr style="text-align:center;">
+                <th>Name</th>
+                <th>E-mail</th>
+                <th>Message</th>
+                </tr>
+                <tr style="text-align:center;">
+                    <td>{{object.name}}</td>
+                    <td>{{object.email}}</td>
+                    <td>{{object.reply}}</td>
+                    </tr>
+
+            </table>
         </div>
     </div>
 </div>
